@@ -45,9 +45,9 @@ G4bool EnergyTest::ProcessHits(G4Step* aStep,G4TouchableHistory*)
   G4String procName = " UserLimit";
 	
   if (process) procName = process->GetProcessName();
-	G4double edep2 = aStep->GetTotalEnergyDeposit();
+  G4double edep2 = aStep->GetTotalEnergyDeposit();
 
-	if ( edep2 >= 0){ // only if the energy deposited in the material is higher than 0
+  if ( edep2 >= 0){ // only if the energy deposited in the material is higher than 0
 	    G4double edep =edep2* 2. * aStep->GetPreStepPoint()->GetWeight();  // weight the energy deposited
 	    AccumulateHit(aStep, edep);  
       	    const std::vector<const G4Track*>* secondary 
@@ -73,10 +73,7 @@ G4bool EnergyTest::ProcessHits(G4Step* aStep,G4TouchableHistory*)
 
 		   	G4cout <<"Local Time(ps)= " << ((*secondary)[lp]->GetLocalTime())/ps << G4endl;
 		        G4cout <<"Global Time(ps)= " << ((*secondary)[lp]->GetGlobalTime())/ps << G4endl;
-
-           
 		}
-		 
 	  }
 
 	  return true;
